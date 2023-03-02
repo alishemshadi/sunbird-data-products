@@ -59,6 +59,9 @@ trait BaseReportsJob {
         spark.sparkContext.hadoopConfiguration.set("fs.azure", "org.apache.hadoop.fs.azure.NativeAzureFileSystem")
         spark.sparkContext.hadoopConfiguration.set(s"fs.azure.account.key.$storageKeyValue.blob.core.windows.net", AppConf.getConfig(storageSecret))
         spark.sparkContext.hadoopConfiguration.set(s"fs.azure.account.keyprovider.$storageKeyValue.blob.core.windows.net", "org.apache.hadoop.fs.azure.SimpleKeyProvider")
+      case "oci" =>
+        spark.sparkContext.hadoopConfiguration.set("fs.oci.ociAccessKeyId", AppConf.getConfig(storageKey));
+        spark.sparkContext.hadoopConfiguration.set("fs.oci.ociSecretAccessKey", AppConf.getConfig(storageSecret));
       case _ =>
        
     }

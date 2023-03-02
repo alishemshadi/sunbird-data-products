@@ -31,7 +31,7 @@ object ProcessFailedEvents extends optional.Application {
 //        val rdd = DataFetcher.fetchBatchData[Map[String, AnyRef]](JSONUtils.deserialize[Fetcher](queryConfig));
 
         val queries = Option(Array(Query(Option("telemetry-data-store"), Option("failed/"), Option(fromDate), Option(toDate))));
-        val rdd = DataFetcher.fetchBatchData[Map[String, AnyRef]](Fetcher("azure", None, queries))
+        val rdd = DataFetcher.fetchBatchData[Map[String, AnyRef]](Fetcher("azure", None, queries)) // this needs to be updated
 
         val validationFailures = rdd.filter{ f =>
             "TelemetryValidator".equals(f.getOrElse("metadata", Map[String, AnyRef]()).asInstanceOf[Map[String, AnyRef]].get("src").getOrElse(""))

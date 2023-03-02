@@ -117,7 +117,7 @@ object DistrictMappingMisMatch extends optional.Application {
         val spark = SparkSession.builder().appName("DistrictMappingMisMatch").config(conf).getOrCreate()
         implicit val sc = spark.sparkContext
 
-        CommonUtil.setAzureConf(sc)
+        CommonUtil.setOCIConf(sc)
         spark
     }
 

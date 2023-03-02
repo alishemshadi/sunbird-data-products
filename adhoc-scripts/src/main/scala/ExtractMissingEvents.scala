@@ -24,7 +24,7 @@ object ExtractMissingEvents {
     println("denorm_events = " + denormEvents.count)
     val pairDenormBCRdd = sparkContext.broadcast(denormEvents.map { x => x("mid").asInstanceOf[String] }.collect.toSet)
 
-
+    // this needs to be updated
     val uniqueEventsConfig =
       s"""{"search":{"type":"azure","queries":[{"bucket":"telemetry-data-store","prefix":"unique/",
          |"endDate":"$processingDate","delta":0}]},"model":"org.ekstep.analytics.job.ExtractBatchEvents","modelParams":{},

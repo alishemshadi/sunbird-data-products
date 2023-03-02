@@ -36,7 +36,7 @@ object CourseStatusUpdater extends optional.Application {
   def getData(config: UpdaterConfig)(implicit sc: SparkContext): RDD[V3Event] = {
 
     val queries = Option(Array(Query(config.bucket, config.prefix, config.startDate, config.endDate)));
-    DataFetcher.fetchBatchData[V3Event](Fetcher("azure", None, queries))
+    DataFetcher.fetchBatchData[V3Event](Fetcher("oci", None, queries))
   }
 
   def getTestData(config: UpdaterConfig)(implicit sc: SparkContext): RDD[V3Event] = {

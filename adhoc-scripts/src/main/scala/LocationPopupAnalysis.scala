@@ -37,7 +37,7 @@ object LocationPopupAnalysis extends optional.Application {
   def main(date: String, cassandraIp: String): Unit = {
 
     //val queryConfig = """{"type":"local","queries":[{"file":"/Users/Santhosh/EkStep/telemetry/unique/2019-12-11-1576076333659.json"}]}""";
-    val queryConfig = s"""{"type":"azure","queries":[{"bucket": "telemetry-data-store", "prefix": "unique/", "endDate": "$date","delta": 0}]}""";
+    val queryConfig = s"""{"type":"azure","queries":[{"bucket": "telemetry-data-store", "prefix": "unique/", "endDate": "$date","delta": 0}]}"""; // this needs to be updated
     implicit val spark = CommonUtil.getSparkSession(10, "LocationPopupAnalysis", Option(cassandraIp));
     implicit val sparkContext = spark.sparkContext;
     implicit val fc = new FrameworkContext();

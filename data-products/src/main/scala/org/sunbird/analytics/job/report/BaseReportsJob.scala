@@ -68,7 +68,7 @@ trait BaseReportsJob {
     sparkSession.stop();
   }
 
-  def setReportsStorageConfiguration(sc: SparkContext, config: JobConfig) {
+  def setReportsStorageConfiguration(sc: SparkContext, config: JobConfig) { // this part may need to be updated
     val modelParams = config.modelParams.getOrElse(Map[String, Option[AnyRef]]())
     val reportsStorageAccountKey = modelParams.getOrElse("storageKeyConfig", "reports_storage_key").asInstanceOf[String];
     val reportsStorageAccountSecret = modelParams.getOrElse("storageSecretConfig", "reports_storage_secret").asInstanceOf[String];

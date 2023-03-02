@@ -227,6 +227,11 @@ object ETBMetricsModel extends IBatchModelTemplate[Empty,Empty,FinalOutput,Final
         val key = AppConf.getConfig("azure_storage_key")
         val file = conf("file")
         s"wasb://$bucket@$key.blob.core.windows.net/$file"
+      case "oci" =>
+        val bucket = conf("bucket")
+        val key = AppConf.getConfig("oci_storage_key")
+        val file = conf("file")
+        s"oci://$bucket@$key/$file"
     }
 
     val scansCount = sparkSession.read
