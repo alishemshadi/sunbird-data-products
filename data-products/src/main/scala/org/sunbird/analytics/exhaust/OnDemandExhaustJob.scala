@@ -178,7 +178,7 @@ trait OnDemandExhaustJob {
     fc.getHadoopFileUtil().delete(conf, tempDir);
     val filePrefix = storageConfig.store.toLowerCase() match {
       case "oci" =>
-        CommonUtil.getOCIFile(storageConfig.container, "");
+        CommonUtil.getOCIFile(storageConfig.accountKey.getOrElse("azure_storage_region"), storageConfig.accountKey.getOrElse("azure_storage_compartment"), storageConfig.accountKey.getOrElse("azure_storage_bucket"), storageConfig.container, "");
       // $COVERAGE-OFF$ Disabling scoverage
       case "s3" =>
         CommonUtil.getS3File(storageConfig.container, "");
